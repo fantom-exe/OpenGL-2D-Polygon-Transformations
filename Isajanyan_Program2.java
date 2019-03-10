@@ -123,16 +123,16 @@ public class Isajanyan_Program2 {
     
     // render
     private void render() {
+        // apply transformations
+        polygonArray.forEach(Polygon::applyTransformations);
+        
         while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
             try {
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 glLoadIdentity( );
                 
-                // apply transitions & draw polygons
-	            polygonArray.forEach(polygon -> {
-	                polygon.applyTransformations();
-	                polygon.draw();
-                });
+                // draw polygons
+	            polygonArray.forEach(Polygon::draw);
                
                 Display.update();
                 Display.sync(60);
