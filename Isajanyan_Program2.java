@@ -52,8 +52,6 @@ public class Isajanyan_Program2 {
             tokens = line.split(" ");
             
             if(tokens[0].equals("P")) {
-                System.out.println("read P"); // debug
-                
                 polygon = new Polygon(); // create new polygon
                 polygon.setColor(Float.parseFloat(tokens[1]),
                                  Float.parseFloat(tokens[2]),
@@ -66,7 +64,6 @@ public class Isajanyan_Program2 {
                     polygon.addVertex(Integer.parseInt(tokens[0]),
                                       Integer.parseInt(tokens[1])); // store vertices
                     
-                    System.out.println("read VERTEX"); // debug
                 } while(scanner.hasNextInt());
                 
                 polygonArray.add(polygon); // add polygon to array
@@ -81,23 +78,17 @@ public class Isajanyan_Program2 {
 				            polygon.addRotation(Integer.parseInt(tokens[1]),
                                                 Integer.parseInt(tokens[2]),
                                                 Integer.parseInt(tokens[3]));
-                            System.out.println("read r"); // debug
 				            break;
 			            case 's':
 				            polygon.addScaling(Float.parseFloat(tokens[1]),
 				                               Float.parseFloat(tokens[2]),
 				                               Float.parseFloat(tokens[3]),
 				                               Float.parseFloat(tokens[4]));
-                            System.out.println("read s"); // debug
 				            break;
 			            case 't':
 				            polygon.addTranslation(Integer.parseInt(tokens[1]),
 				                                   Integer.parseInt(tokens[2]));
-                            System.out.println("read t"); // debug
 				            break;
-                        default:
-                            System.out.println("read WTF"); // debug
-                            break;
 		            }
 	            } while(!scanner.hasNext("[P]") && scanner.hasNextLine());
 	            
@@ -173,8 +164,8 @@ class Polygon extends java.awt.Polygon {
     
     void draw() {
         glPushMatrix();
-            glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
             glPointSize(10);
+            glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
             
             // apply transitions
             transitions.forEach(floats -> {
