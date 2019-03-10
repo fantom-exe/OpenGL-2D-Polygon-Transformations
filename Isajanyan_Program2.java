@@ -244,8 +244,10 @@ class Polygon extends java.awt.Polygon {
             System.out.println("orig vertices X: " + origX); // debug
             System.out.println("orig vertices Y: " + origY); // debug
             
-            newX = (int)( (origX * Math.cos(angle)) - (origY * Math.sin(angle)) );
-            newY = (int)( (origX * Math.sin(angle)) + (origY * Math.cos(angle)) );
+            // x = xr + (x − xr) cos θ − (y − yr) sin θ
+            newX = (int)( (pivotX + (origX - pivotX) * Math.cos(angle)) - ( (origY - pivotY) * Math.sin(angle)) );
+            // y = yr + (x − xr) sin θ + (y − yr) cos θ
+            newY = (int)( (pivotY + (origX - pivotX) * Math.sin(angle)) + ( (origY + pivotY) * Math.cos(angle)) );
             
             vertices[0] = newX;
             vertices[1] = newY;
