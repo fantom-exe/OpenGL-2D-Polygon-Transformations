@@ -129,7 +129,10 @@ public class Isajanyan_Program2 {
                 glLoadIdentity( );
                 
                 // apply transitions & draw polygons
-	            polygonArray.forEach(Polygon::draw);
+	            polygonArray.forEach(polygon -> {
+	                polygon.applyTransitions();
+	                polygon.draw();
+                });
                
                 Display.update();
                 Display.sync(60);
@@ -167,7 +170,7 @@ class Polygon extends java.awt.Polygon {
         glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
         
         // apply transformations
-        
+        applyTransitions();
         
         // draw vertices
         glBegin(GL_LINE_LOOP);
@@ -181,7 +184,7 @@ class Polygon extends java.awt.Polygon {
     }
     
     // applies transformations and updates vertices
-    private void applyTransitions( ) {
+    void applyTransitions( ) {
         // call functions to apply transitions in order
         transitions.forEach(floats -> {
             switch(floats.length) {
