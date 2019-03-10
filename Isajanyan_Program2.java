@@ -186,7 +186,7 @@ class Polygon extends java.awt.Polygon {
         transitions.forEach(floats -> {
             switch(floats.length) {
                 case 2: // t
-                    translate();
+                    translate(floats);
                     System.out.println("applyTransitions t"); // debug
                     break;
                 case 3: // r
@@ -194,7 +194,7 @@ class Polygon extends java.awt.Polygon {
                     System.out.println("applyTransitions r"); // debug
                     break;
                 case 4: // s
-                    scale();
+                    scale(floats);
                     System.out.println("applyTransitions s"); // debug
                     break;
             }
@@ -226,12 +226,12 @@ class Polygon extends java.awt.Polygon {
     }
     
     // applies SCALING
-    private void scale() {
+    private void scale(float[] floats) {
     
     }
     
     // applies TRANSLATION
-    private void translate() {
+    private void translate(float[] floats) {
     
     }
     
