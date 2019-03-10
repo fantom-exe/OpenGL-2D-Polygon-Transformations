@@ -237,11 +237,11 @@ class Polygon extends java.awt.Polygon {
     
     // applies ROTATION
     private void rotate(float[] floats) {
-        float angle = floats[0], origX = floats[1], origY = floats[2];
-        
+        float angle = floats[0], pivotX = floats[1], pivotY = floats[2];
         
         vertices.forEach(vertices -> {
-            int newX, newY;
+            int  origX = vertices[0], origY = vertices[1],
+                 newX, newY;
             
             System.out.println("orig vertices X: " + origX); // debug
             System.out.println("orig vertices Y: " + origY); // debug
