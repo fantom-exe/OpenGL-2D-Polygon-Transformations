@@ -186,15 +186,15 @@ class Polygon extends java.awt.Polygon {
             switch(floats.length) {
                 case 2: // t
                     translate(floats);
-                    System.out.println("applyTransitions t"); // debug
+                    System.out.println("t"); // debug
                     break;
                 case 3: // r
                     rotate(floats);
-                    System.out.println("applyTransitions r"); // debug
+                    System.out.println("r"); // debug
                     break;
                 case 4: // s
                     scale(floats);
-                    System.out.println("applyTransitions s"); // debug
+                    System.out.println("s"); // debug
                     break;
             }
         });
@@ -239,9 +239,8 @@ class Polygon extends java.awt.Polygon {
         float angle = floats[0], pivotX = floats[1], pivotY = floats[2];
         
         vertices.forEach(vertices -> {
-            int  origX = vertices[0], origY = vertices[1],
-                 newX, newY;
-            
+            int  origX = vertices[0], newX,
+                 origY = vertices[1], newY;
             System.out.println("orig vertices X: " + origX); // debug
             System.out.println("orig vertices Y: " + origY); // debug
             
@@ -250,7 +249,6 @@ class Polygon extends java.awt.Polygon {
             
             vertices[0] = newX;
             vertices[1] = newY;
-            
             System.out.println("rotate vertices X: " + newX); // debug
             System.out.println("rotate vertices Y: " + newY); // debug
         });
