@@ -163,42 +163,37 @@ class Polygon extends java.awt.Polygon {
     }
     
     void draw() {
-        glPushMatrix();
-            glPointSize(10);
-            glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
-
-            // draw vertices
-            glBegin(GL_LINE_LOOP);
-            vertices.forEach(ints -> {
-                glVertex2f(ints[0], ints[1]);
-                
-                System.out.println("vertex x: " + ints[0]); // debug
-                System.out.println("vertex y: " + ints[1]); // debug
-            });
-            glEnd();
-    	glPopMatrix();
+        glPointSize(10);
+        glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
+        
+        // apply transformations
+        
+        
+        // draw vertices
+        glBegin(GL_LINE_LOOP);
+        vertices.forEach(ints -> {
+            glVertex2f(ints[0], ints[1]);
+            
+            System.out.println("vertex x: " + ints[0]); // debug
+            System.out.println("vertex y: " + ints[1]); // debug
+        });
+        glEnd();
     }
     
-    // applies transitions and updates vertices
+    // applies transformations and updates vertices
     private void applyTransitions( ) {
         // call functions to apply transitions in order
         transitions.forEach(floats -> {
             switch(floats.length) {
                 case 2: // t
-                    
-                    
                     translate();
                     System.out.println("applyTransitions t"); // debug
                     break;
                 case 3: // r
-                    
-                    
                     rotate(floats);
                     System.out.println("applyTransitions r"); // debug
                     break;
                 case 4: // s
-                    
-                    
                     scale();
                     System.out.println("applyTransitions s"); // debug
                     break;
