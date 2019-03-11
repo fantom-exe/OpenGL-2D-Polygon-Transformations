@@ -223,7 +223,15 @@ class Polygon extends java.awt.Polygon {
     
     // applies SCALING
     private void scale(float[] floats) {
-    
+        float factorX = floats[0], factorY = floats[1], pivotX = floats[1], pivotY = floats[2];
+        
+        vertices.forEach(vertices -> {
+            int  origX = vertices[0], newX,
+                 origY = vertices[1], newY;
+            System.out.println("orig vertices X: " + origX); // debug
+            System.out.println("orig vertices Y: " + origY); // debug
+            
+        });
     }
     
     // applies TRANSLATION
