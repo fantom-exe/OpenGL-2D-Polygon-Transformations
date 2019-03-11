@@ -223,7 +223,7 @@ class Polygon extends java.awt.Polygon {
     
     // applies SCALING
     private void scale(float[] floats) {
-        float factorX = floats[0], factorY = floats[1], pivotX = floats[1], pivotY = floats[2];
+        float factorX = floats[0], factorY = floats[1], pivotX = floats[2], pivotY = floats[3];
         
         vertices.forEach(vertices -> {
             int  origX = vertices[0], newX,
@@ -231,6 +231,15 @@ class Polygon extends java.awt.Polygon {
             System.out.println("orig vertices X: " + origX); // debug
             System.out.println("orig vertices Y: " + origY); // debug
             
+            // x = x · sx + x f (1 − sx)
+            newX = ;
+            // y = y · sy + y f (1 − sy)
+            newY = ;
+            
+            vertices[0] = newX;
+            vertices[1] = newY;
+            System.out.println("rotate vertices X: " + newX); // debug
+            System.out.println("rotate vertices Y: " + newY); // debug
         });
     }
     
