@@ -186,15 +186,12 @@ class Polygon extends java.awt.Polygon {
             switch(floats.length) {
                 case 2: // t
                     translate(floats);
-                    System.out.println("t"); // debug
                     break;
                 case 3: // r
                     rotate(floats);
-                    System.out.println("r"); // debug
                     break;
                 case 4: // s
                     scale(floats);
-                    System.out.println("s"); // debug
                     break;
             }
         });
