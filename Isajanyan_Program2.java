@@ -170,7 +170,7 @@ class Polygon extends java.awt.Polygon {
         glPointSize(10);
         
         // draw vertices
-        glBegin(GL_POLYGON);
+        glBegin(GL_LINE_LOOP);
         vertices.forEach(ints -> {
             glVertex2f(ints[0], ints[1]);
             System.out.println("draw vertex x: " + ints[0]); // debug
@@ -231,9 +231,9 @@ class Polygon extends java.awt.Polygon {
             System.out.println("scale vertices X: " + origX); // debug
             System.out.println("scale vertices Y: " + origY); // debug
             
-            // x = x · sx + x f (1 − sx)
+            // x = x · sx + xf (1 − sx)
             newX = (int) ( origX * factorX + pivotX * (1 - factorX) );
-            // y = y · sy + y f (1 − sy)
+            // y = y · sy + yf (1 − sy)
             newY = (int) ( origY * factorY + pivotY * (1 - factorY) );
             
             vertices[0] = newX;
