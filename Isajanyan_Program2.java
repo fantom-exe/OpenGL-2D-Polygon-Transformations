@@ -63,7 +63,6 @@ public class Isajanyan_Program2 {
                     
                     polygon.addVertex(Integer.parseInt(tokens[0]),
                                       Integer.parseInt(tokens[1])); // store vertices
-                    
                 } while(scanner.hasNextInt());
                 
                 polygonArray.add(polygon); // add polygon to array
@@ -139,7 +138,6 @@ public class Isajanyan_Program2 {
             } catch(Exception e) {
                 e.printStackTrace();
             }
-
         }
         
         Display.destroy( );
@@ -173,8 +171,6 @@ class Polygon extends java.awt.Polygon {
         glBegin(GL_LINE_LOOP);
         vertices.forEach(ints -> {
             glVertex2f(ints[0], ints[1]);
-            System.out.println("draw vertex x: " + ints[0]); // debug
-            System.out.println("draw vertex y: " + ints[1]); // debug
         });
         glEnd( );
     }
@@ -227,7 +223,7 @@ class Polygon extends java.awt.Polygon {
     
         vertices.forEach(vertices -> {
             int origX = vertices[0], newX,
-                    origY = vertices[1], newY;
+                origY = vertices[1], newY;
         
             // x' = x + tx
             newX = (int) (origX + transX);
@@ -245,7 +241,7 @@ class Polygon extends java.awt.Polygon {
         
         vertices.forEach(vertices -> {
             int origX = vertices[0], newX,
-                    origY = vertices[1], newY;
+                origY = vertices[1], newY;
             
             // x = xr + (x − xr) cos θ − (y − yr) sin θ
             newX = (int) ((pivotX + (origX - pivotX) * Math.cos(angle)) - ((origY - pivotY) * Math.sin(angle)));
@@ -263,7 +259,7 @@ class Polygon extends java.awt.Polygon {
         
         vertices.forEach(vertices -> {
             int origX = vertices[0], newX,
-                    origY = vertices[1], newY;
+                origY = vertices[1], newY;
             
             // x = x · sx + xf (1 − sx)
             newX = (int) (origX * factorX + pivotX * (1 - factorX));
