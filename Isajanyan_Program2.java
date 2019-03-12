@@ -169,7 +169,7 @@ class Polygon extends java.awt.Polygon {
         glPointSize(10);
         
         // draw vertices
-        glBegin(GL_LINE_LOOP);
+        glBegin(GL_POINTS);
         vertices.forEach(ints -> {
             glVertex2f(ints[0], ints[1]);
         });
