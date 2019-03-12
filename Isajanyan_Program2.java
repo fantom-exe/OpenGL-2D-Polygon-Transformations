@@ -159,7 +159,7 @@ class Polygon extends java.awt.Polygon {
     private ArrayList<float[]> transitions;
     
     Polygon( ) {
-        vertices = new ArrayList<>( );
+        vertices    = new ArrayList<>( );
         transitions = new ArrayList<>( );
     }
     
@@ -220,16 +220,16 @@ class Polygon extends java.awt.Polygon {
     private void translate(float[] floats) {
         // applies TRANSLATION
         float transX = floats[0], transY = floats[1];
-    
+        
         vertices.forEach(vertices -> {
             int origX = vertices[0], newX,
                 origY = vertices[1], newY;
-        
+            
             // x' = x + tx
             newX = (int) (origX + transX);
             // y' = y + ty
             newY = (int) (origY + transY);
-        
+            
             vertices[0] = newX;
             vertices[1] = newY;
         });
