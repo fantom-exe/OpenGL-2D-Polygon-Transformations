@@ -178,7 +178,7 @@ class Polygon extends java.awt.Polygon {
     
     // applies transformations and updates vertices
     void applyTransformations( ) {
-	    Collections.reverse(transitions);
+    	Collections.reverse(transitions);
 	    
         // call functions to apply transitions in reverse order
         transitions.forEach(floats -> {
