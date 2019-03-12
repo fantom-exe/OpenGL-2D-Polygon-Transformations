@@ -180,7 +180,7 @@ class Polygon extends java.awt.Polygon {
     void applyTransformations( ) {
 	    Collections.reverse(transitions);
 	    
-        // call functions to apply transitions in order
+        // call functions to apply transitions in reverse order
         transitions.forEach(floats -> {
             switch(floats.length) {
                 case 2: // t
@@ -247,9 +247,11 @@ class Polygon extends java.awt.Polygon {
                 origY = vertices[1], newY;
             
             // x = xr + (x − xr) cos θ − (y − yr) sin θ
-            newX = (int) ((pivotX + (origX - pivotX) * Math.cos(angle)) - ((origY - pivotY) * Math.sin(angle)));
+            newX =
+		            (int) ((pivotX + (origX - pivotX) * Math.cos(Math.toRadians(angle))) - ((origY - pivotY) * Math.sin(Math.toRadians(angle))));
             // y = yr + (x − xr) sin θ + (y − yr) cos θ
-            newY = (int) ((pivotY + (origX - pivotX) * Math.sin(angle)) + ((origY + pivotY) * Math.cos(angle)));
+            newY =
+		            (int) ((pivotY + (origX - pivotX) * Math.sin(Math.toRadians(angle))) + ((origY + pivotY) * Math.cos(Math.toRadians(angle))));
             
             vertices[0] = newX;
             vertices[1] = newY;
