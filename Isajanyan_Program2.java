@@ -26,7 +26,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 
 public class Isajanyan_Program2 {
-	ArrayList<Polygon> polygonArray = new ArrayList<>(); // stores all polygons
+	private ArrayList<Polygon> polygonArray = new ArrayList<>(); // stores all polygons
 	
 	// start
 	private void start() {
@@ -169,7 +169,7 @@ class Polygon extends java.awt.Polygon {
         glPointSize(10);
         
         // draw vertices
-        glBegin(GL_POINTS);
+        glBegin(GL_LINE_LOOP);
         vertices.forEach(ints -> {
             glVertex2f(ints[0], ints[1]);
         });
@@ -178,9 +178,7 @@ class Polygon extends java.awt.Polygon {
     
     // applies transformations and updates vertices
     void applyTransformations( ) {
-    	Collections.reverse(transitions);
-	    
-        // call functions to apply transitions in reverse order
+        // call functions to apply transitions in order
         transitions.forEach(floats -> {
             switch(floats.length) {
                 case 2: // t
