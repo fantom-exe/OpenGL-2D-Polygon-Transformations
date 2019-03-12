@@ -245,20 +245,19 @@ class Polygon extends java.awt.Polygon {
     
     // applies TRANSLATION
     private void translate(float[] floats) {
-    
-        float factorX = floats[0], factorY = floats[1], pivotX = floats[2], pivotY = floats[3];
-    
+        float transX = floats[0], transY = floats[1];
+        
         vertices.forEach(vertices -> {
             int  origX = vertices[0], newX,
-                    origY = vertices[1], newY;
-            System.out.println("translate vertices X: " + origX); // debug
-            System.out.println("translate vertices Y: " + origY); // debug
-        
-            // x = x · sx + x f (1 − sx)
-            newX = (int) ( origX * factorX + pivotX * (1 - factorX) );
-            // y = y · sy + y f (1 − sy)
-            newY = (int) ( origY * factorY + pivotY * (1 - factorY) );
-        
+                 origY = vertices[1], newY;
+            System.out.println("origX vertices X: " + origX); // debug
+            System.out.println("origY vertices Y: " + origY); // debug
+            
+            // x' = x + tx
+            newX = (int) ( origX + transX );
+            // y' = y + ty
+            newY = (int) ( origY + transY );
+            
             vertices[0] = newX;
             vertices[1] = newY;
             System.out.println("translate vertices X: " + newX); // debug
