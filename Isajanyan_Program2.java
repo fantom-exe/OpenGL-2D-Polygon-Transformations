@@ -19,6 +19,7 @@ import org.lwjgl.opengl.DisplayMode;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -177,6 +178,8 @@ class Polygon extends java.awt.Polygon {
     
     // applies transformations and updates vertices
     void applyTransformations( ) {
+	    Collections.reverse(transitions);
+	    
         // call functions to apply transitions in order
         transitions.forEach(floats -> {
             switch(floats.length) {
