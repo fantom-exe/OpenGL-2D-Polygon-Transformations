@@ -228,8 +228,8 @@ class Polygon extends java.awt.Polygon {
         vertices.forEach(vertices -> {
             int  origX = vertices[0], newX,
                  origY = vertices[1], newY;
-            System.out.println("orig vertices X: " + origX); // debug
-            System.out.println("orig vertices Y: " + origY); // debug
+            System.out.println("scale vertices X: " + origX); // debug
+            System.out.println("scale vertices Y: " + origY); // debug
             
             // x = x · sx + x f (1 − sx)
             newX = (int) ( origX * factorX + pivotX * (1 - factorX) );
@@ -238,8 +238,8 @@ class Polygon extends java.awt.Polygon {
             
             vertices[0] = newX;
             vertices[1] = newY;
-            System.out.println("rotate vertices X: " + newX); // debug
-            System.out.println("rotate vertices Y: " + newY); // debug
+            System.out.println("scale vertices X: " + newX); // debug
+            System.out.println("scale vertices Y: " + newY); // debug
         });
     }
     
