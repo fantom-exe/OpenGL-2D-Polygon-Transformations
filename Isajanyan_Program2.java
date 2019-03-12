@@ -232,9 +232,9 @@ class Polygon extends java.awt.Polygon {
             System.out.println("orig vertices Y: " + origY); // debug
             
             // x = x · sx + x f (1 − sx)
-            newX = ;
+            newX = (int) ( origX * factorX + pivotX * (1 - factorX) );
             // y = y · sy + y f (1 − sy)
-            newY = ;
+            newY = (int) ( origY * factorY + pivotY * (1 - factorY) );
             
             vertices[0] = newX;
             vertices[1] = newY;
