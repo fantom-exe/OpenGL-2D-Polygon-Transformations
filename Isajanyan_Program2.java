@@ -160,12 +160,12 @@ class Polygon extends java.awt.Polygon {
     private ArrayList<int[]>   vertices;
     private ArrayList<float[]> transitions;
     
-    Polygon() {
-	    vertices    = new ArrayList<>();
-	    transitions = new ArrayList<>();
+    Polygon( ) {
+        vertices = new ArrayList<>( );
+        transitions = new ArrayList<>( );
     }
     
-    void draw() {
+    void draw( ) {
         glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
         glPointSize(10);
         
@@ -176,7 +176,7 @@ class Polygon extends java.awt.Polygon {
             System.out.println("draw vertex x: " + ints[0]); // debug
             System.out.println("draw vertex y: " + ints[1]); // debug
         });
-        glEnd();
+        glEnd( );
     }
     
     // applies transformations and updates vertices
@@ -206,7 +206,7 @@ class Polygon extends java.awt.Polygon {
     }
     
     void addVertex(int x, int y) {
-    	vertices.add(new int[] { x, y });
+        vertices.add(new int[] { x, y });
     }
     
     void addRotation(float angle, float pivotX, float pivotY) {
@@ -221,47 +221,21 @@ class Polygon extends java.awt.Polygon {
         transitions.add(new float[] { x, y });
     }
     
-    // applies SCALING
-    private void scale(float[] floats) {
-        float factorX = floats[0], factorY = floats[1], pivotX = floats[2], pivotY = floats[3];
-        
-        vertices.forEach(vertices -> {
-            int  origX = vertices[0], newX,
-                 origY = vertices[1], newY;
-            System.out.println("scale vertices X: " + origX); // debug
-            System.out.println("scale vertices Y: " + origY); // debug
-            
-            // x = x · sx + xf (1 − sx)
-            newX = (int) ( origX * factorX + pivotX * (1 - factorX) );
-            // y = y · sy + yf (1 − sy)
-            newY = (int) ( origY * factorY + pivotY * (1 - factorY) );
-            
-            vertices[0] = newX;
-            vertices[1] = newY;
-            System.out.println("scale vertices X: " + newX); // debug
-            System.out.println("scale vertices Y: " + newY); // debug
-        });
-    }
-    
-    // applies TRANSLATION
     private void translate(float[] floats) {
+        // applies TRANSLATION
         float transX = floats[0], transY = floats[1];
-        
+    
         vertices.forEach(vertices -> {
-            int  origX = vertices[0], newX,
-                 origY = vertices[1], newY;
-            System.out.println("origX vertices X: " + origX); // debug
-            System.out.println("origY vertices Y: " + origY); // debug
-            
+            int origX = vertices[0], newX,
+                    origY = vertices[1], newY;
+        
             // x' = x + tx
-            newX = (int) ( origX + transX );
+            newX = (int) (origX + transX);
             // y' = y + ty
-            newY = (int) ( origY + transY );
-            
+            newY = (int) (origY + transY);
+        
             vertices[0] = newX;
             vertices[1] = newY;
-            System.out.println("translate vertices X: " + newX); // debug
-            System.out.println("translate vertices Y: " + newY); // debug
         });
     }
     
@@ -270,21 +244,34 @@ class Polygon extends java.awt.Polygon {
         float angle = floats[0], pivotX = floats[1], pivotY = floats[2];
         
         vertices.forEach(vertices -> {
-            int  origX = vertices[0], newX,
-                 origY = vertices[1], newY;
-            System.out.println("orig vertices X: " + origX); // debug
-            System.out.println("orig vertices Y: " + origY); // debug
+            int origX = vertices[0], newX,
+                    origY = vertices[1], newY;
             
             // x = xr + (x − xr) cos θ − (y − yr) sin θ
-            newX = (int)( (pivotX + (origX - pivotX) * Math.cos(angle)) - ( (origY - pivotY) * Math.sin(angle)) );
+            newX = (int) ((pivotX + (origX - pivotX) * Math.cos(angle)) - ((origY - pivotY) * Math.sin(angle)));
             // y = yr + (x − xr) sin θ + (y − yr) cos θ
-            newY = (int)( (pivotY + (origX - pivotX) * Math.sin(angle)) + ( (origY + pivotY) * Math.cos(angle)) );
+            newY = (int) ((pivotY + (origX - pivotX) * Math.sin(angle)) + ((origY + pivotY) * Math.cos(angle)));
             
             vertices[0] = newX;
             vertices[1] = newY;
-            System.out.println("rotate vertices X: " + newX); // debug
-            System.out.println("rotate vertices Y: " + newY); // debug
         });
     }
     
+    // applies SCALING
+    private void scale(float[] floats) {
+        float factorX = floats[0], factorY = floats[1], pivotX = floats[2], pivotY = floats[3];
+        
+        vertices.forEach(vertices -> {
+            int origX = vertices[0], newX,
+                    origY = vertices[1], newY;
+            
+            // x = x · sx + xf (1 − sx)
+            newX = (int) (origX * factorX + pivotX * (1 - factorX));
+            // y = y · sy + yf (1 − sy)
+            newY = (int) (origY * factorY + pivotY * (1 - factorY));
+            
+            vertices[0] = newX;
+            vertices[1] = newY;
+        });
+    }
 }
