@@ -166,15 +166,15 @@ class Polygon extends java.awt.Polygon {
     }
     
     void draw() {
-        glPointSize(10);
         glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
+        glPointSize(10);
         
         // draw vertices
-        glBegin(GL_LINE_LOOP);
+        glBegin(GL_POLYGON);
         vertices.forEach(ints -> {
             glVertex2f(ints[0], ints[1]);
-            System.out.println("vertex x: " + ints[0]); // debug
-            System.out.println("vertex y: " + ints[1]); // debug
+            System.out.println("draw vertex x: " + ints[0]); // debug
+            System.out.println("draw vertex y: " + ints[1]); // debug
         });
         glEnd();
     }
