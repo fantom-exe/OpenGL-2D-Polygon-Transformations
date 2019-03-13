@@ -19,6 +19,7 @@ import org.lwjgl.opengl.DisplayMode;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -125,8 +126,11 @@ public class Isajanyan_Program2 {
 
 	// render
 	private void render() {
-		// apply transformations
+		// apply transformations & update vertices
 		polygonArray.forEach(Polygon::applyTransformations);
+		
+		// init edge table
+  
 
 		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 			try {
@@ -145,6 +149,12 @@ public class Isajanyan_Program2 {
 
 		Display.destroy( );
 	}
+	
+	private void initAllEdgeTable() {
+	    Iterator vertices = polygonArray.iterator();
+	    
+	    vertices.next();
+    }
 
 	// main
 	public static void main(String[] args) {
