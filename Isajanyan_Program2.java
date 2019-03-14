@@ -150,7 +150,7 @@ public class Isajanyan_Program2 {
 		Display.destroy( );
 	}
 	
-	private void initAllEdgeTable() {
+	private void initAllEdges() {
 	    Iterator vertices = polygonArray.iterator();
 	    
 	    vertices.next();
@@ -229,9 +229,9 @@ class Polygon extends java.awt.Polygon {
 	void addTranslation(float x, float y) {
 		transitions.add(new float[] { x, y });
 	}
-
+	
+	// applies TRANSLATION
 	private void translate(float[] floats) {
-		// applies TRANSLATION
 		float transX = floats[0], transY = floats[1];
 
 		vertices.forEach(vertices -> {
@@ -256,9 +256,9 @@ class Polygon extends java.awt.Polygon {
 			int origX = vertices[0], newX,
 				origY = vertices[1], newY;
 
-			// x = xr + (x − xr) cos θ − (y − yr) sin θ
+			// x' = xr + (x − xr) cos θ − (y − yr) sin θ
 			newX = (int) ((pivotX + (origX - pivotX) * Math.cos(Math.toRadians(angle))) - ((origY - pivotY) * Math.sin(Math.toRadians(angle))));
-			// y = yr + (x − xr) sin θ + (y − yr) cos θ
+			// y' = yr + (x − xr) sin θ + (y − yr) cos θ
 			newY = (int) ((pivotY + (origX - pivotX) * Math.sin(Math.toRadians(angle))) + ((origY + pivotY) * Math.cos(Math.toRadians(angle))));
 
 			vertices[0] = newX;
@@ -274,9 +274,9 @@ class Polygon extends java.awt.Polygon {
 			int origX = vertices[0], newX,
 				origY = vertices[1], newY;
 
-			// x = x · sx + xf (1 − sx)
+			// x' = x · sx + xf (1 − sx)
 			newX = (int) (origX * factorX + pivotX * (1 - factorX));
-			// y = y · sy + yf (1 − sy)
+			// y' = y · sy + yf (1 − sy)
 			newY = (int) (origY * factorY + pivotY * (1 - factorY));
 
 			vertices[0] = newX;
