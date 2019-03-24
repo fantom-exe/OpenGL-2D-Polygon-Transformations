@@ -130,7 +130,7 @@ public class Isajanyan_Program2 {
 		polygonArray.forEach(Polygon::applyTransformations);
 		
 		// init edge table
-  
+		
 
 		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 			try {
