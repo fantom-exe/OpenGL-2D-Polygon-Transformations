@@ -29,7 +29,8 @@ public class Isajanyan_Program2 {
 	// stores all polygons
 	private ArrayList<Polygon> polygonArray = new ArrayList<>();
 
-	//
+	// edge tables
+	
  
 	// start
 	private void start() {
@@ -101,7 +102,14 @@ public class Isajanyan_Program2 {
 
 		scanner.close();
 	}
-
+	
+	// init all edges
+	private void initAllEdges() {
+		Iterator vertices = polygonArray.iterator();
+		
+		vertices.next();
+	}
+	
 	// create window
 	private void createWindow() throws Exception{
 		Display.setFullscreen(false);
@@ -110,7 +118,7 @@ public class Isajanyan_Program2 {
 		Display.setTitle("Isajanyan_Program2");
 		Display.create( );
 	}
-
+	
 	// init GL
 	private void initGL() {
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -123,7 +131,7 @@ public class Isajanyan_Program2 {
 		glMatrixMode(GL_MODELVIEW);
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	}
-
+	
 	// render
 	private void render() {
 		// apply transformations & update vertices
@@ -149,12 +157,6 @@ public class Isajanyan_Program2 {
 
 		Display.destroy( );
 	}
-	
-	private void initAllEdges() {
-	    Iterator vertices = polygonArray.iterator();
-	    
-	    vertices.next();
-    }
 
 	// main
 	public static void main(String[] args) {
