@@ -103,13 +103,6 @@ public class Isajanyan_Program2 {
 		scanner.close();
 	}
 	
-	// init all edges
-	private void initAllEdges() {
-		Iterator vertices = polygonArray.iterator();
-		
-		vertices.next();
-	}
-	
 	// create window
 	private void createWindow() throws Exception{
 		Display.setFullscreen(false);
@@ -137,8 +130,8 @@ public class Isajanyan_Program2 {
 		// apply transformations & update vertices
 		polygonArray.forEach(Polygon::applyTransformations);
 		
-		// init edge table
-		
+		// init edge tables
+		polygonArray.forEach(Polygon::initAllEdges);
 
 		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 			try {
@@ -207,7 +200,16 @@ class Polygon extends java.awt.Polygon {
 			}
 		});
 	}
-
+	
+	// init all edges
+	void initAllEdges() {
+		Iterator iterator = vertices.iterator();
+		
+		vertices.forEach();
+		
+		iterator.next();
+	}
+	
 	void setColor(float f1, float f2, float f3) {
 		color = new float[] { f1, f2, f3 };
 	}
