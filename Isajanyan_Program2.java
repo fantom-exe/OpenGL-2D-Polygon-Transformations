@@ -37,10 +37,11 @@ public class Isajanyan_Program2 {
 	// start
 	private void start() {
 		try {
+			// init polygons
 			readCoordinates();
 			applyTransformations();
+			
 			initEdges();
-			draw();
 			
 			// begin render
 			createWindow();
@@ -134,8 +135,7 @@ public class Isajanyan_Program2 {
 	
 	// render
 	private void render() {
-		// apply transformations & update vertices
-		polygonArray.forEach(Polygon::applyTransformations);
+		polygonArray.forEach(this::applyTransformations);
 		
 		// render loop
 		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
@@ -164,6 +164,11 @@ public class Isajanyan_Program2 {
 		glBegin(GL_LINE_LOOP);
 			polygon.vertices.forEach(ints -> glVertex2f(ints[0], ints[1]));
 		glEnd( );
+	}
+	
+	// apply transformations & update vertices
+	private void applyTransformations(Polygon polygon) {
+		polygon.applyTransformations();
 	}
 	
 	// init all edges
