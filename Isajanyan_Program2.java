@@ -144,7 +144,7 @@ public class Isajanyan_Program2 {
 				glLoadIdentity( );
 
 				// draw polygons
-				polygonArray.forEach(Polygon::draw);
+				polygonArray.forEach(this::draw);
 
 				Display.update();
 				Display.sync(60);
@@ -157,14 +157,12 @@ public class Isajanyan_Program2 {
 	}
 	
 	// draw vertices
-	private void draw( ) {
-		glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
+	private void draw(Polygon polygon) {
+		glColor3f(polygon.getColorAt(0), polygon.getColorAt(1), polygon.getColorAt(2));
 		glPointSize(10);
 		
 		glBegin(GL_LINE_LOOP);
-		vertices.forEach(ints -> {
-			glVertex2f(ints[0], ints[1]);
-		});
+			polygon.vertices.forEach(ints -> glVertex2f(ints[0], ints[1]));
 		glEnd( );
 	}
 	
@@ -189,8 +187,8 @@ public class Isajanyan_Program2 {
 class Polygon extends java.awt.Polygon {
 	private float[] color;
 
-	private ArrayList<int[]>   vertices;
-	private ArrayList<float[]> transitions;
+	ArrayList<int[]>   vertices;
+	ArrayList<float[]> transitions;
 
 	Polygon( ) {
 		vertices    = new ArrayList<>( );
@@ -219,7 +217,7 @@ class Polygon extends java.awt.Polygon {
 		color = new float[] { f1, f2, f3 };
 	}
 
-	private float getColorAt(int i) {
+	float getColorAt(int i) {
 		return color[i];
 	}
 
