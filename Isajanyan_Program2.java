@@ -38,6 +38,11 @@ public class Isajanyan_Program2 {
 	private void start() {
 		try {
 			readCoordinates();
+			applyTransformations();
+			initEdges();
+			draw();
+			
+			// begin render
 			createWindow();
 			initGL();
 			render();
@@ -132,9 +137,7 @@ public class Isajanyan_Program2 {
 		// apply transformations & update vertices
 		polygonArray.forEach(Polygon::applyTransformations);
 		
-		// init edge tables
-		polygonArray.forEach(Polygon::initAllEdges);
-		
+		// render loop
 		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 			try {
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -152,7 +155,28 @@ public class Isajanyan_Program2 {
 
 		Display.destroy( );
 	}
-
+	
+	// draw vertices
+	private void draw( ) {
+		glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
+		glPointSize(10);
+		
+		glBegin(GL_LINE_LOOP);
+		vertices.forEach(ints -> {
+			glVertex2f(ints[0], ints[1]);
+		});
+		glEnd( );
+	}
+	
+	// init all edges
+	private void initAllEdges() {
+		Iterator iterator = vertices.iterator();
+		
+		vertices.forEach();
+		
+		iterator.next();
+	}
+	
 	// main
 	public static void main(String[] args) {
 		Isajanyan_Program2 program2 = new Isajanyan_Program2();
