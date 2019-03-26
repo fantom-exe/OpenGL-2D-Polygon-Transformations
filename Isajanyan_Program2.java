@@ -163,7 +163,7 @@ public class Isajanyan_Program2 {
 		glColor3f(polygon.getColorAt(0), polygon.getColorAt(1), polygon.getColorAt(2));
 		glPointSize(10);
 		
-		glBegin(GL_LINE_LOOP);
+		glBegin(GL_POLYGON);
 			polygon.vertices.forEach(ints -> glVertex2f(ints[0], ints[1]));
 		glEnd( );
 	}
@@ -176,10 +176,15 @@ public class Isajanyan_Program2 {
 	// init all edges
 	private void initAllEdgesTable() {
 		Iterator iterator = polygonArray.iterator();
+		Polygon  polygon  = (Polygon)iterator.next();
 		
-		polygonArray.forEach(polygon -> {
-			// 
+		all_edges.forEach(floats -> {
+//			floats[0] ;
 		});
+		
+//		polygonArray.forEach(polygon -> {
+//
+//		});
 	}
 	
 	// init global edges
