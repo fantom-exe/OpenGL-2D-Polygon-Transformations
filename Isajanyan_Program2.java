@@ -42,7 +42,10 @@ public class Isajanyan_Program2 {
 			// apply transformations to polygons
 			polygonArray.forEach(this::applyTransformations);
 			
-			initEdges();
+			// init tables
+			initAllEdgesTable();
+			initGlobalEdgesTable();
+			initActiveEdgesTable();
 			
 			// begin render
 			createWindow();
