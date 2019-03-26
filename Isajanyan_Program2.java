@@ -28,18 +28,19 @@ import static org.lwjgl.opengl.GL11.*;
 public class Isajanyan_Program2 {
 	// stores all polygons
 	private ArrayList<Polygon> polygonArray = new ArrayList<>();
-
+	
 	// edge tables
-	private ArrayList<float[]> all_edges = new ArrayList<>();
+	private ArrayList<float[]> all_edges    = new ArrayList<>();
 	private ArrayList<float[]> global_edges = new ArrayList<>();
 	private ArrayList<float[]> active_edges = new ArrayList<>();
- 
+	
 	// start
 	private void start() {
 		try {
 			// init polygons
 			readCoordinates();
-			applyTransformations();
+			// apply transformations to polygons
+			polygonArray.forEach(this::applyTransformations);
 			
 			initEdges();
 			
@@ -135,8 +136,6 @@ public class Isajanyan_Program2 {
 	
 	// render
 	private void render() {
-		polygonArray.forEach(this::applyTransformations);
-		
 		// render loop
 		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 			try {
@@ -156,7 +155,7 @@ public class Isajanyan_Program2 {
 		Display.destroy( );
 	}
 	
-	// draw vertices
+	// draw given polygon obj
 	private void draw(Polygon polygon) {
 		glColor3f(polygon.getColorAt(0), polygon.getColorAt(1), polygon.getColorAt(2));
 		glPointSize(10);
