@@ -174,12 +174,22 @@ public class Isajanyan_Program2 {
 	}
 	
 	// init all edges
-	private void initAllEdges() {
-		Iterator iterator = vertices.iterator();
+	private void initAllEdgesTable() {
+		Iterator iterator = polygonArray.iterator();
 		
-		vertices.forEach();
-		
-		iterator.next();
+		polygonArray.forEach(polygon -> {
+			// 
+		});
+	}
+	
+	// init global edges
+	private void initGlobalEdgesTable() {
+	
+	}
+	
+	// init active edges
+	private void initActiveEdgesTable() {
+	
 	}
 	
 	// main
