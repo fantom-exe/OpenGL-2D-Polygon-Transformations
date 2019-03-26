@@ -30,7 +30,9 @@ public class Isajanyan_Program2 {
 	private ArrayList<Polygon> polygonArray = new ArrayList<>();
 
 	// edge tables
-	
+	private ArrayList<float[]> all_edges = new ArrayList<>();
+	private ArrayList<float[]> global_edges = new ArrayList<>();
+	private ArrayList<float[]> active_edges = new ArrayList<>();
  
 	// start
 	private void start() {
@@ -132,7 +134,7 @@ public class Isajanyan_Program2 {
 		
 		// init edge tables
 		polygonArray.forEach(Polygon::initAllEdges);
-
+		
 		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 			try {
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -171,18 +173,6 @@ class Polygon extends java.awt.Polygon {
 		transitions = new ArrayList<>( );
 	}
 	
-    // draw vertices
-	void draw( ) {
-		glColor3f(getColorAt(0), getColorAt(1), getColorAt(2));
-		glPointSize(10);
-		
-		glBegin(GL_LINE_LOOP);
-		vertices.forEach(ints -> {
-			glVertex2f(ints[0], ints[1]);
-		});
-		glEnd( );
-	}
-
 	// applies transformations and updates vertices
 	void applyTransformations( ) {
 		// call functions to apply transitions in order
@@ -199,15 +189,6 @@ class Polygon extends java.awt.Polygon {
 					break;
 			}
 		});
-	}
-	
-	// init all edges
-	void initAllEdges() {
-		Iterator iterator = vertices.iterator();
-		
-		vertices.forEach();
-		
-		iterator.next();
 	}
 	
 	void setColor(float f1, float f2, float f3) {
